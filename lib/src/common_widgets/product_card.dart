@@ -1,0 +1,122 @@
+import 'package:flutter/material.dart';
+import 'package:shop_it_all/src/common_widgets/add_button.dart';
+import 'package:shop_it_all/src/constants/padding_constants.dart';
+import 'package:shop_it_all/src/constants/shop_it_keys.dart';
+import '../constants/color_constants.dart';
+import '../features/home/domain/product_model.dart';
+import 'card_widget.dart';
+
+class ProductCard extends StatelessWidget {
+  const ProductCard(
+      {super.key,
+      required this.productModel,
+      required this.isAllowed,
+      required this.onTap,
+      required this.onLike,
+      required this.likeIcon, this.cardColor});
+
+  final ProductModel productModel;
+  final bool isAllowed;
+  final VoidCallback onTap;
+  final VoidCallback onLike;
+  final Widget likeIcon;
+  final Color? cardColor;
+
+  @override
+  Widget build(BuildContext context) {
+    return Card.outlined(
+      color: cardColor,
+        key: ShopItKeys.productCardKey,
+        margin: pdAll5,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16.0),
+        ),
+        child: InkWell(
+          borderRadius: BorderRadius.circular(16),
+          splashColor: btnColor,
+          onTap: onTap,
+          mouseCursor: MouseCursor.defer,
+          child: SizedBox(
+            width: 180, // Fixed width for each card
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                ItemImage(
+                  likeKey: ShopItKeys.likeBtnKey,
+                  productImage: productModel.productImage,
+                  onCart: onLike,
+                  cartIcon: likeIcon,
+                  height: 200,
+                  width: double.infinity,
+                ),
+                ItemsDetails(
+                  productName: productModel.productName,
+                  productPrice: productModel.productPrice,
+                  productDescription: productModel.productDescription,
+                  allowed: isAllowed,
+                )
+              ],
+            ),
+          ),
+        ));
+  }
+}
+
+class ProductHorizontalCard extends StatelessWidget {
+  const ProductHorizontalCard({
+    super.key,
+    required this.productHorModel,
+    required this.isHorAllowed,
+    required this.toCart,
+  });
+
+  final ProductModel productHorModel;
+  final bool isHorAllowed;
+  final VoidCallback toCart;
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      elevation: 4, // Adds a shadow effect
+      margin: const EdgeInsets.symmetric(
+          horizontal: 10, vertical: 5), // Adjust margins as needed
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(16.0),
+      ),
+      child: SizedBox(
+        height: 150, // Fixed height for the card
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.start, // Align items to start
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            ItemImage(
+              productImage: productHorModel.productImage,
+              onCart: () {}, // You can implement this function if needed
+              cartIcon: const Icon(Icons.favorite_border),
+              height: 150, // Match the card height
+              width: 150, // Adjust width as needed
+            ),
+            const SizedBox(width: 10), // Space between image and details
+            Expanded(
+              // Allows details to take remaining space
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  ItemsDetails(
+                    productName: productHorModel.productName,
+                    productPrice: productHorModel.productPrice,
+                    productDescription: productHorModel.productDescription,
+                    allowed: isHorAllowed,
+                  ),
+                  const SizedBox(height: 8), // Space between details and button
+                  BlackAddButton(toCart: toCart),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

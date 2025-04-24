@@ -1,0 +1,2 @@
+C:/Users/samue/studioProject/flutterProject/shop_it_all-main/shop_it_all-main/android/app/.cxx/RelWithDebInfo/3m1u4h13/x86/CMakeFiles/edit_cache.dir
+C:/Users/samue/studioProject/flutterProject/shop_it_all-main/shop_it_all-main/android/app/.cxx/RelWithDebInfo/3m1u4h13/x86/CMakeFiles/rebuild_cache.dir
