@@ -5,6 +5,7 @@ import 'package:shop_it_all/src/constants/padding_constants.dart';
 import '../../../common_widgets/horizontal_product_list.dart';
 import '../../../common_widgets/my_dialog_box.dart';
 import '../../home/presentation/category_section.dart';
+import '../../home/presentation/see_all_page.dart';
 
 class AccountList extends StatelessWidget {
   const AccountList({super.key});
@@ -48,7 +49,14 @@ class ProfileItemList extends StatelessWidget {
             titleList: 'Profile store',
             text: 'See all',
             onHeader: () {
-              myDialogBox(context);
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => SeeAllPage(
+                            titleText: 'Profile Store',
+                            sliverImage:
+                                'assets/images/random_images/eCommerce Business Models_ Type, Benefits & Examples.jpg',
+                          )));
             },
           ),
           gbHt10,

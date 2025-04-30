@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shop_it_all/src/constants/color_constants.dart';
 import 'package:shop_it_all/src/constants/content_gaps_constants.dart';
 
 class AddButton extends StatelessWidget {
@@ -22,13 +23,14 @@ class AddButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return OutlinedButton(
+    return TextButton(
         onPressed: onWish,
         style: OutlinedButton.styleFrom(
             backgroundColor: btnBackground,
             elevation: 4.0,
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(5))),
+            shape: RoundedRectangleBorder(
+                side: BorderSide(color: btnColor),
+                borderRadius: BorderRadius.circular(5))),
         child: Row(
           mainAxisSize: MainAxisSize.max,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -57,17 +59,33 @@ class AddButton extends StatelessWidget {
 }
 
 class BlackAddButton extends StatelessWidget {
-  const BlackAddButton({super.key, required this.toCart});
+  const BlackAddButton(
+      {super.key, required this.toCart, required this.addText});
 
   final VoidCallback toCart;
+  final String addText;
 
   @override
   Widget build(BuildContext context) {
-    return OutlinedButton(
+    return TextButton(
+        style: OutlinedButton.styleFrom(
+            backgroundColor: btnColor,
+            elevation: 4.0,
+            shape: RoundedRectangleBorder(
+                side: BorderSide(color: btnColor),
+                borderRadius: BorderRadius.circular(5))),
         onPressed: toCart,
-        child: const Text(
-          'Add to cart',
-          style: TextStyle(fontSize: 14),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              addText,
+              style: TextStyle(
+                  fontSize: 14,
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold),
+            )
+          ],
         ));
   }
 }
@@ -77,7 +95,7 @@ class ChangeTextButton extends StatelessWidget {
       {super.key,
       required this.onChangeText,
       required this.changeText,
-      this.txtBtnColor = Colors.black});
+      this.txtBtnColor = Colors.blue});
 
   final VoidCallback onChangeText;
   final String changeText;
@@ -96,6 +114,8 @@ class ChangeTextButton extends StatelessWidget {
           changeText,
           overflow: TextOverflow.ellipsis,
           style: TextStyle(
+            decoration: TextDecoration.underline,
+            decorationThickness: 2.0,
             color: txtBtnColor,
             fontSize: 14,
           ),

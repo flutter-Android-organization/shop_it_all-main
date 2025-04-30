@@ -1,29 +1,42 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shop_it_all/src/constants/content_gaps_constants.dart';
 import '../../../common_widgets/expandable_icon_button.dart';
+import '../../account/presentation/controller/current_user_controller.dart';
 
-class ProfileImage extends StatefulWidget {
+class ProfileImage extends ConsumerWidget {
   const ProfileImage({super.key});
 
   @override
-  State<ProfileImage> createState() => _ProfileImageState();
-}
-
-class _ProfileImageState extends State<ProfileImage> {
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final isAuth = ref.watch(currentUserControllerProvider).value != null;
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        const Center(
+        Center(
           child: CircleAvatar(
-            backgroundImage: AssetImage('assets/images/random_images/huston.jpg'),
+            backgroundImage: AssetImage( isAuth ? 'assets/images/random_images/huston.jpg' : 'assets/images/random_images/profile.png'),
             radius: 100.0,
           ),
         ),
         gbHt10,
-        const BioDetails(),
+        Text(
+          isAuth ? 'Samuel Huston' : 'Guest',
+          softWrap: true,
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+        ),
+        gbHt5,
+        Text(
+          'Creating a user profile page in Flutter involves several key '
+              'concepts, including the use of widgets to structure the layout',
+          softWrap: true,
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            color: Colors.grey,
+            fontSize: 12,
+          ),
+        ),
         gbHt10,
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -46,35 +59,6 @@ class _ProfileImageState extends State<ProfileImage> {
                 label: 'Edit Profile',
                 toolTip: 'Edit Photo')
           ],
-        )
-      ],
-    );
-  }
-}
-
-class BioDetails extends StatelessWidget {
-  const BioDetails({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Column(
-      mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        Text(
-          'Samuel Huston',
-          softWrap: true,
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-        ),
-        gbHt5,
-        Text(
-          'Creating a user profile page in Flutter involves several key concepts, including the use of widgets to structure the layout',
-          softWrap: true,
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            color: Colors.grey,
-            fontSize: 12,
-          ),
         )
       ],
     );

@@ -9,6 +9,7 @@ import 'package:shop_it_all/src/constants/padding_constants.dart';
 import 'package:shop_it_all/src/features/wishlist/presentation/controller/wish_list_page_controller.dart';
 import 'package:shop_it_all/src/features/wishlist/presentation/wish_product_list.dart';
 import '../../../common_widgets/add_button.dart';
+import '../../home/presentation/see_all_page.dart';
 
 
 class WishListPage extends ConsumerStatefulWidget {
@@ -25,14 +26,6 @@ class _WishListPageState extends ConsumerState<WishListPage> {
     return ScrollableWidget(children: [
       gbHt30,
       WishList(),
-      // Container(
-      //   margin: pdHor10,
-      //   padding: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
-      //   decoration: BoxDecoration(
-      //       color: Colors.grey.withAlpha(40),
-      //       borderRadius: BorderRadius.circular(16)),
-      //   child:
-      // ),
       Padding(
         padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
         child: AddButton(
@@ -47,7 +40,16 @@ class _WishListPageState extends ConsumerState<WishListPage> {
       ProductListHeader(
         titleList: 'You may also like',
         text: 'See all',
-        onHeader: () {},
+        onHeader: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => SeeAllPage(
+                    titleText: 'You may also like',
+                    sliverImage:
+                    'assets/images/random_images/eCommerce Business Models_ Type, Benefits & Examples.jpg',
+                  )));
+        },
       ),
       gbHt10,
       const HorizontalProductList(isAllowed: true),

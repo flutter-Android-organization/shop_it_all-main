@@ -1,49 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shop_it_all/src/constants/padding_constants.dart';
 
-// class InputTextWidget extends StatelessWidget {
-//   const InputTextWidget(
-//       {super.key,
-//       required this.fieldController,
-//       required this.inputIcon,
-//       required this.inputText,
-//       required this.inputHelper,
-//       required this.obscure,
-//       this.inputSuffix,
-//       this.suffixClick});
-//
-//   final TextEditingController fieldController;
-//   final String inputHelper;
-//   final IconData inputIcon;
-//   final String inputText;
-//   final bool obscure;
-//   final IconData? inputSuffix;
-//   final VoidCallback? suffixClick;
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return TextField(
-//       controller: fieldController,
-//       obscureText: obscure,
-//       decoration: InputDecoration(
-//           helperText: inputHelper,
-//           focusedBorder: OutlineInputBorder(
-//               borderSide: BorderSide(width: 2.0, color: Colors.blue),
-//               borderRadius: BorderRadius.circular(5)),
-//           hintText: inputText,
-//           prefixIcon: Icon(inputIcon),
-//           suffixIcon: IconButton(
-//             highlightColor: Colors.blue,
-//             onPressed: suffixClick,
-//             icon: Icon(inputSuffix),
-//           ),
-//           border: OutlineInputBorder(
-//               borderRadius: BorderRadius.circular(5),
-//               borderSide: BorderSide())),
-//     );
-//   }
-// }
-
 class InputTextWidget extends StatelessWidget {
   const InputTextWidget(
       {super.key,

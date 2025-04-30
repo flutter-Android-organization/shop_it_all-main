@@ -60,7 +60,7 @@ class BottomNavBar extends StatelessWidget {
             BottomNavigationBarItem(
                 key: ShopItKeys.cartBtnKey,
                 icon: Icon(Icons.shopping_cart_outlined),
-                label: 'Add To Cart'),
+                label: 'Cart'),
           ],
         ),
       ),

@@ -56,7 +56,7 @@ class HorizontalGridList extends ConsumerWidget {
         value: providerFetchProduct,
         data: (gridProduct) => Container(
           margin: pdHor10,
-          height: 580,
+          height: 550,
           child: GridView.builder(
             scrollDirection: Axis.horizontal,
             itemCount: gridProduct.length,
@@ -73,7 +73,8 @@ class HorizontalGridList extends ConsumerWidget {
               final cardColor = cardColors[index % 4];
               return ProductCard(
                 productModel: gridData,
-                cardColor: Colors.grey.withAlpha(70),
+                cardHeight: 140,
+                cardColor: cardColor,
                 isAllowed: false,
                 onTap: () {
                   Navigator.push(

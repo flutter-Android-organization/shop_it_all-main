@@ -66,16 +66,14 @@ class CakePageBody extends StatelessWidget {
               ],
             )),
             gbHt40,
-            AddButton(
-                onWish: () => Navigator.push(
+            BlackAddButton(
+                toCart: () => Navigator.push(
                     context,
                     MaterialPageRoute(
                         builder: (context) => ChangeBetweenLoginSignup(
                               initialViewIsLogin: false,
-                              // logToSign: false,
                             ))),
-                wishText: 'Sign me up!',
-                btnBackground: Color(0xffFFE393)),
+                addText: 'Sign me up!'),
             gbHt20,
             ChangeTextButton(
                 key: ShopItKeys.goToAccountKey,

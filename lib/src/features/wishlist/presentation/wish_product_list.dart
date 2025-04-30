@@ -27,17 +27,20 @@ class WishList extends ConsumerWidget {
         }
         return Column(
           children: indexedProduct.map((wishData) {
+            final selectedItems =
+                wishState.value ?? []; // Extract state safely
+            final isSelected =
+            selectedItems.contains(wishData);
             final quantity = productQuantities[wishData.productId] ?? 1;
             return ProductItem(
-              itemList: wishData,
-              toCart: () => Navigator.push(
+              onTem: () => Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => ProductPage(
                     topProduct: wishData,
                     addToCart: () {
                       final updatedProduct =
-                          wishData.copyWith(quantity: quantity);
+                      wishData.copyWith(quantity: quantity);
                       productCartState.addToCart(updatedProduct);
                       showSnackBar(
                           context,
@@ -51,8 +54,15 @@ class WishList extends ConsumerWidget {
                     },
                   ),
                 ),
-              ), //wishState.addItemToCart(wishData),
-              trueIcon: true,
+              ),
+              itemList: wishData,
+              toCart: () async {
+                await ref
+                    .read(wishListPageControllerProvider.notifier)
+                    .toggleProductInWishList(wishData);
+              },
+              cartIcon:  Icon(
+                  isSelected ? Icons.favorite : Icons.favorite_border), //wishState.addItemToCart(wishData),
             );
           }).toList(),
         );
@@ -66,11 +76,13 @@ class ProductItem extends StatelessWidget {
       {super.key,
       required this.itemList,
       required this.toCart,
-      this.trueIcon = true});
+      this.trueIcon = true, required this.onTem, required this.cartIcon});
 
   final ProductModel itemList;
   final VoidCallback toCart;
   final bool trueIcon;
+  final VoidCallback onTem;
+  final Widget cartIcon;
 
   @override
   Widget build(BuildContext context) {
@@ -82,7 +94,7 @@ class ProductItem extends StatelessWidget {
         temPrice: itemList.productPrice,
         temOnCart: toCart,
         temDescription: itemList.productDescription,
-        trueIcon: trueIcon,
+        trueIcon: trueIcon, onTem: onTem, cartIcon: cartIcon,
       ),
     );
   }

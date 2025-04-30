@@ -33,7 +33,7 @@ class _HorizontalProductListState extends ConsumerState<HorizontalProductList> {
         value: providerFetchProduct,
         data: (productData) => Container(
               padding: pdHor10,
-              height: 350, // Fixed height for the horizontal ListView
+              height: 360, // Fixed height for the horizontal ListView
               child: ListView.builder(
                 scrollDirection:
                     Axis.horizontal, // Set scroll direction to horizontal

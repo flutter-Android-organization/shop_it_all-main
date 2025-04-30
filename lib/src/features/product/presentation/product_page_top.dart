@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shop_it_all/src/common_widgets/add_button.dart';
 import 'package:shop_it_all/src/common_widgets/item_quantity.dart';
+import 'package:shop_it_all/src/constants/color_constants.dart';
 import 'package:shop_it_all/src/constants/shop_it_keys.dart';
 import 'package:shop_it_all/src/constants/content_gaps_constants.dart';
 import 'package:shop_it_all/src/features/home/domain/product_model.dart';
@@ -121,8 +122,8 @@ class TopPageDetails extends StatelessWidget {
               gbWd20,
               Expanded(
                   child: AddButton(
-                btnBackground: Colors.black,
-                txtColor: Colors.white,
+                btnBackground: btnColor,
+                txtColor: Colors.black,
                 key: ShopItKeys.addToCartKey,
                 onWish: addToCart,
                 wishIcon: Icons.add_shopping_cart,

@@ -65,11 +65,9 @@ class IrrelevantPageBody extends StatelessWidget {
               ],
             )),
             gbHt40,
-            AddButton(
-              onWish: () => context.goNamed(RouteNames.workWith.name),
-              wishText: 'Next',
-              btnBackground: btnColor,
-            ),
+            BlackAddButton(
+                toCart: () => context.goNamed(RouteNames.workWith.name),
+                addText: 'Next'),
             gbHt30
           ]),
     );

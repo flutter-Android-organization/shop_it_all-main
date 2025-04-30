@@ -6,6 +6,7 @@ import 'package:shop_it_all/src/common_widgets/my_dialog_box.dart';
 import 'package:shop_it_all/src/constants/content_gaps_constants.dart';
 import 'package:shop_it_all/src/constants/padding_constants.dart';
 import 'package:shop_it_all/src/features/account/data/repository/auth_repository.dart';
+import 'package:shop_it_all/src/features/account/presentation/change_between_login_signup.dart';
 import 'package:shop_it_all/src/features/account/presentation/controller/auth_controller.dart';
 import 'package:shop_it_all/src/routes/route_names.dart';
 import '../../../common_widgets/setting_button.dart';
@@ -17,6 +18,7 @@ class SettingList extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final isAuth = ref.watch(currentUserControllerProvider).value != null;
     return Padding(
       padding: pd1All0,
       child: Column(
@@ -63,27 +65,37 @@ class SettingList extends ConsumerWidget {
               onSetting: () {},
               settingIcon: Icons.person_outline_rounded,
               settingText: 'Manage Account'),
-          SettingButton(
-              onSetting: () async {
-                final logSuccess = await ref.watch(currentUserControllerProvider.notifier).isLoggedIn();
-                if (logSuccess) {
-                  myDialogBox(context,
-                      dialogText: 'Are you sure you want to logout? ',
-                      show: true,
-                      btnTextTwo: 'yes',
-                      onDialogueClick: () async {
-                    await ref.read(currentUserControllerProvider.notifier).logOut();
-                    context.goNamed(RouteNames.account.name);
-                    showSnackBar(context, 'Logged out successfully',
-                        'assets/images/random_images/correct.png');
-                  });
-                } else {
-                  showSnackBar(context, 'You have not logged in!',
-                      'assets/images/random_images/error.png');
-                }
-              },
-              settingIcon: Icons.logout_rounded,
-              settingText: 'Logout')
+          isAuth
+              ? SettingButton(
+                  onSetting: () async {
+                    final logSuccess = await ref
+                        .watch(currentUserControllerProvider.notifier)
+                        .isLoggedIn();
+                    if (logSuccess) {
+                      myDialogBox(context,
+                          dialogText: 'Are you sure you want to logout? ',
+                          show: true,
+                          btnTextTwo: 'yes', onDialogueClick: () async {
+                        await ref
+                            .read(currentUserControllerProvider.notifier)
+                            .logOut();
+                        context.goNamed(RouteNames.account.name);
+                        showSnackBar(context, 'Logged out successfully',
+                            'assets/images/random_images/correct.png');
+                      });
+                    } else {
+                      showSnackBar(context, 'You have not logged in!',
+                          'assets/images/random_images/error.png');
+                    }
+                  },
+                  settingIcon: Icons.logout_rounded,
+                  settingText: 'Logout')
+              : SettingButton(
+                  onSetting: () {
+                   context.goNamed(RouteNames.account.name);
+                  },
+                  settingIcon: Icons.login_outlined,
+                  settingText: 'Sign in'),
         ],
       ),
     );

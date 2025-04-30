@@ -64,11 +64,9 @@ class WorkWithPageBody extends StatelessWidget {
               ],
             )),
             gbHt40,
-            AddButton(
-              onWish: () => context.goNamed(RouteNames.cake.name),
-              wishText: 'Next',
-              btnBackground: btnColor,
-            ),
+            BlackAddButton(
+                toCart: () => context.goNamed(RouteNames.cake.name),
+                addText: 'Next'),
             gbHt30
           ]),
     );

@@ -12,6 +12,7 @@ import '../../../common_widgets/add_button.dart';
 import '../../../common_widgets/horizontal_bar.dart';
 import '../../../common_widgets/my_dialog_box.dart';
 import '../../../routes/route_names.dart';
+import '../../home/presentation/see_all_page.dart';
 import 'add_to_cart_area.dart';
 
 
@@ -81,7 +82,14 @@ class OtherBoughtLow extends StatelessWidget {
           titleList: 'Others Bought',
           text: 'See all',
           onHeader: () {
-            myDialogBox(context);
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => SeeAllPage(
+                      titleText: 'Others Bought',
+                      sliverImage:
+                      'assets/images/random_images/eCommerce Business Models_ Type, Benefits & Examples.jpg',
+                    )));
           },
         ),
         const HorizontalProductList(isAllowed: true),

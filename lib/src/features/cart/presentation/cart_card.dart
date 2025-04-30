@@ -55,12 +55,8 @@ class CartCard extends StatelessWidget {
   Widget _buildItemImage(String image) {
     return ItemImage(
       productImage: image,
-      onCart: () {},
-      cartIcon: const Icon(Icons.shopping_cart_outlined),
       height: 180, // Set a fixed height for the image
       width: 180, // Set a fixed width for the image
-      trueIcon: false,
-      favColor: Colors.black,
     );
   }
 

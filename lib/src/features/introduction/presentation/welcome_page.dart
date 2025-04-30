@@ -16,31 +16,27 @@ class WelcomePage extends StatelessWidget {
           children: [
             const Expanded(
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'Welcome to the world\'s largest store',
-                      softWrap: true,
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          fontFamily: 'Lora',
-                          fontWeight: FontWeight.bold,
-                          fontSize: 35,
-                          color: Colors.black),
-                    ),
-                  ],
-                )),
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'Welcome to the world\'s largest store',
+                  softWrap: true,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      fontFamily: 'Lora',
+                      fontWeight: FontWeight.bold,
+                      fontSize: 35,
+                      color: Colors.black),
+                ),
+              ],
+            )),
             gbHt40,
-            AddButton(
-              onWish: () => context.goNamed(RouteNames.irrelevant.name),
-              wishText: 'Let\'s begin',
-              btnBackground: const Color(0xffFFE393),
-            ),
+            BlackAddButton(
+                toCart: () => context.goNamed(RouteNames.irrelevant.name),
+                addText: 'Let\'s begin'),
             gbHt30,
           ]),
     );
   }
 }
-
-

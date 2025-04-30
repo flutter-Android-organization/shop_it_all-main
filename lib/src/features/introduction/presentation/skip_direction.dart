@@ -17,7 +17,6 @@ class SkipDirection extends StatelessWidget {
         ChangeTextButton(
           onChangeText: () => context.goNamed(RouteNames.account.name),
           changeText: 'Skip',
-          txtBtnColor: Colors.grey,
         )
       ],
     );
