@@ -49,7 +49,8 @@ class CustomAppBar extends ConsumerWidget implements PreferredSizeWidget {
                   fontSize: 16,
                   fontWeight: FontWeight.bold)),
           if (customIconChange)
-            Text(customSubText,
+            Text(
+                isAuth ? customSubText : 'Offline',
                 style: TextStyle(
                     color: isAuth ? Colors.green : Colors.red, fontSize: 14)),
         ],

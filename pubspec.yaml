@@ -21,6 +21,8 @@ dependencies:
   flutter_rating_bar: ^4.0.1
   shared_preferences: ^2.3.3
   skeletonizer: ^1.4.3
+  flutter_native_splash: ^2.4.6
+
 
 
 dev_dependencies:
@@ -34,6 +36,7 @@ dev_dependencies:
   custom_lint: ^0.7.0
   riverpod_lint: ^2.6.3
   mocktail: ^1.0.4
+  flutter_launcher_icons: ^0.14.3
 
 
 flutter:
@@ -55,3 +58,27 @@ flutter:
   #       - asset: fonts/TrajanPro.ttf
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
+
+
+flutter_native_splash:
+  color: "#FFE393"
+  image: assets/images/random_images/shop_it_logo.png
+  branding: assets/images/random_images/shop_it_logo.png
+  branding_mode: center
+  android_gravity: center
+  ios_content_mode: center
+  android: true
+  ios: true
+  web: true
+
+  android_12:
+    color: "#FFE393"
+    image: assets/images/random_images/shop_it_logo.png
+    branding_mode: center
+    android_gravity: center
+    ios_content_mode: center
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/random_images/shop_it_logo.png"

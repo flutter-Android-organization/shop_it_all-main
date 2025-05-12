@@ -19,7 +19,7 @@ class ShopItAllRobot {
   }
   
   Future<void> theIntroSection () async {
-    final goId = find.byType(AddButton);
+    final goId = find.byType(BlackAddButton);
     expect(goId, findsOneWidget);
     await tester.tap(goId);
     await tester.pumpAndSettle();

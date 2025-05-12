@@ -34,6 +34,7 @@ class _SignupPageState extends State<SignupPage> {
             if (value == null || value.isEmpty) {
               return 'Please enter an email';
             }
+
             return null;
           },
         ),

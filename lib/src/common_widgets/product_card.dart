@@ -15,7 +15,7 @@ class ProductCard extends StatelessWidget {
       required this.onLike,
       required this.likeIcon,
       this.cardColor,
-        this.cardWidth = 160,
+        this.cardWidth = 195,
         this.cardHeight = 180
       });
 

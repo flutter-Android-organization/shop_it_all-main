@@ -71,6 +71,7 @@ class ItemsDetails extends StatelessWidget {
             children: [
               Text(
                 productName,
+                overflow: TextOverflow.ellipsis,
                 style: const TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
               ),
               if (trueIcon)
